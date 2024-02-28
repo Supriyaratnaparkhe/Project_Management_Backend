@@ -153,12 +153,6 @@ router.get("/analytics/:userId", authenticate, async (req, res) => {
 router.delete("/deleteTask/:userId/:taskId", authenticate, async (req, res) => {
     try {
         const { userId, taskId } = req.params;
-        if (
-            !mongoose.Types.ObjectId.isValid(userId) ||
-            !mongoose.Types.ObjectId.isValid(taskId)
-        ) {
-            return res.status(400).json({ error: "Invalid user or task ID " });
-        }
 
         const task = await Task.findOne({ userId, _id: taskId });
 
@@ -179,10 +173,6 @@ router.put("/editTask/:userId/:taskId", authenticate, async (req, res) => {
     try {
         const { userId, taskId } = req.params;
         const { title, checklists, priority, dueDate } = req.body;
-
-        if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(taskId)) {
-            return res.status(400).json({ error: "Invalid user ID or task ID" });
-        }
 
         const task = await Task.findOne({ userId, _id: taskId });
 
