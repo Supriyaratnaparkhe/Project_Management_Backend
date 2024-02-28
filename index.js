@@ -9,13 +9,13 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
-// app.use(cors(
-//     {
-//         origin:[""],
-//         methods:["POST","GET","PUT"],
-//         credentials:true
-//     }
-// ));
+app.use(cors(
+    {
+        origin:["https://project-management-app-supriya.netlify.app"],
+        methods:["POST","GET","PUT"],
+        credentials:true
+    }
+));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ limit: '10mb' }))
 app.set('view engine', 'ejs');
