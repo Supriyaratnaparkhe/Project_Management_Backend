@@ -101,7 +101,7 @@ router.put("/settings/:userId", authenticate, async (req, res) => {
         } else {
             user.password = user.password;
         }
-        if (name.lenth > 0) {
+        if (name.length > 0) {
             user.name = name;
 
         } else {
